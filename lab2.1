@@ -1,0 +1,19 @@
+@file:JvmName("JDoodle")
+import java.io.File
+
+fun main() {
+    val numbers = mutableListOf<Double>()
+    File("/uploads/2.1.txt").forEachLine { line ->
+        val number = line.trim().toDoubleOrNull()
+        if (number != null) {
+            numbers.add(number)
+        }
+    }
+
+    val multiplesOf5 = numbers.filter { it % 5 == 0.0 }
+
+    val sortedMultiples = multiplesOf5.sortedDescending()
+
+    println("Числа, кратні 5 та відсортовані за спаданням:")
+    sortedMultiples.forEach { println(it) }
+}
